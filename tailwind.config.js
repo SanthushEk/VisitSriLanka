@@ -7,8 +7,8 @@ export default {
   theme: {
     extend: {
       fontFamily: {
-        sourGummy: ['"Sour Gummy"', 'sans-serif'],
         roboto: ['"Roboto"', 'sans-serif'],
+        ScopeOne: ['"Scope One"', 'serif'],
       },
     },
   },

@@ -26,12 +26,13 @@ const Transportation = () => {
   return (
     <div className="container mx-auto p-4 sm:p-6 md:p-10 mb-20">
       {/* Title Section */}
-      <div className="text-center mb-6 md:mb-8 mt-6 md:mt-10">
-        <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold text-yellow-500">Transportation Options</h1>
+      <div className="text-center font-ScopeOne mb-6 md:mb-8 mt-6 md:mt-10">
+        <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold">Rent Or Hire</h1>
         <div className="flex items-center justify-center mt-2">
-          <h2 className="text-base sm:text-lg md:text-xl font-medium text-gray-600">Choose your mode of transport</h2>
+          <h2 className="text-base sm:text-lg md:text-xl font-bold text-yellow-500">Choose your mode</h2>
         </div>
-        <div className="w-24 sm:w-36 md:w-[300px] h-1 bg-yellow-500 mx-auto mt-4"></div>
+        <hr className="w-20 mx-auto mt-4 border-t-4 border-yellow-500" />
+
       </div>
 
       {/* Transportation Cards */}

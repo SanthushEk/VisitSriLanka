@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Sigiriya from "../../assets/Sigiriya.jpg";
 import Kandy from "../../assets/Kandy.jpg";
 import Ella from "../../assets/Ella.jpg";
@@ -34,6 +34,16 @@ const ImageSlider = () => {
     setCurrentIndex((prevIndex) => (prevIndex - 1 + items.length) % items.length);
   };
 
+  useEffect(() => {
+    // Set an interval to change the slide every 5 seconds (5000ms)
+    const interval = setInterval(() => {
+      nextSlide();
+    }, 2000);
+
+    // Clear the interval when the component unmounts
+    return () => clearInterval(interval);
+  }, []);
+
   const visibleItems = [
     items[currentIndex],
     items[(currentIndex + 1) % items.length],
@@ -54,14 +64,14 @@ const ImageSlider = () => {
             className={`${
               index === 0
                 ? 'w-[300px] sm:w-[400px] lg:w-[600px] h-[300px] sm:h-[400px] lg:h-[600px] shadow-lg relative rounded-lg overflow-hidden bg-transparent'
-                : 'hidden sm:block sm:w-[200px] lg:w-[300px] sm:h-[250px] lg:h-[350px] shadow-md rounded-lg overflow-hidden'
+                : 'hidden sm:block sm:w-[200px] lg:w-[300px] sm:h-[350px] lg:h-[350px] rounded-lg overflow-hidden'
             }`}
             style={{ backgroundImage: `url(${item.image})`, backgroundSize: 'cover', backgroundPosition: 'center' }}
           >
             {index === 0 && (
-              <div className="absolute inset-0 bg-black bg-opacity-40 flex flex-col justify-center items-center text-center text-white p-5 sm:p-10 lg:p-20">
-                <h2 className="text-[25px] sm:text-[40px] lg:text-[50px] font-bold mb-5 font-roboto text-yellow-500">{item.name}</h2>
-                <p className="text-[15px] sm:text-[20px] lg:text-[25px] mb-4 font-roboto">{item.description}</p>
+              <div className="absolute inset-0 bg-black font-ScopeOne bg-opacity-40 flex flex-col justify-center items-center text-center text-white p-5 sm:p-10 lg:p-20">
+                <h2 className="text-[25px] sm:text-[40px] lg:text-[50px] font-bold mb-5 text-yellow-500">{item.name}</h2>
+                <p className="text-[15px] sm:text-[20px] lg:text-[25px] font-extrabold mb-4">{item.description}</p>
               </div>
             )}
           </div>
@@ -69,7 +79,7 @@ const ImageSlider = () => {
       </div>
 
       {/* Navigation buttons */}
-      <div className="absolute bottom-5 flex space-x-2 z-10">
+      <div className="absolute bottom-12 flex space-x-2 z-10">
         <button
           className="w-8 h-8 sm:w-10 sm:h-10 flex items-center justify-center bg-gray-300 rounded hover:bg-gray-400 transition"
           onClick={prevSlide}
@@ -85,9 +95,15 @@ const ImageSlider = () => {
       </div>
 
       {/* "Top 10 Destinations" Text */}
-      <div className="absolute bottom-20 right-20 z-10 text-white text-right leading-tight font-roboto">
+      <div className="absolute bottom-20 right-20 z-10 text-white text-right leading-tight font-ScopeOne">
         <h2 className="text-[50px] sm:text-[100px] lg:text-[150px] font-bold">Top 10</h2>
-        <h3 className="text-[30px] sm:text-[50px] lg:text-[80px] text-yellow-500">Destinations</h3>
+        <h3 className="sm:text-[50px] lg:text-[70px] text-yellow-500">Destinations</h3>
+      </div>
+      <div className="absolute top-8 left-10 right-10">
+        <hr className="border-t-4 border-yellow-500 w-auto opacity-50" />
+      </div>
+      <div className="absolute bottom-5 left-10 right-10">
+        <hr className="border-t-4 border-yellow-500 w-auto opacity-50" />
       </div>
     </div>
   );
